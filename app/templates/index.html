@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>文字数カウンター</title>
+</head>
+<body>
+    <h1>文字数カウンター</h1>
+
+    <form action="/" method="POST">
+        <input type="text" name="input_text" placeholder="文章を入力してください">
+        <input type="submit" value="カウント">
+    </form>
+
+    <hr>
+
+    {% if char_count is not none %}
+        <p>{{ char_count }}文字です</p>
+    {% endif %}
+</body>
+</html>
