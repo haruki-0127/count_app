@@ -14,8 +14,18 @@
 
     <hr>
 
-    {% if char_count is not none %}
-        <p>{{ char_count }}文字です</p>
+    {% if data is not none %}
+        <p>全体　　　　　　　　　　　　：{{ data['whole_length'] }}文字</p>
+        <p>空白を除く　　　　　　　　　：{{ data['no_space_length'] }}文字</p>
+        <p>ひらがな　　　　　　　　　　：{{ data['hiragana'] }}文字</p>
+        <p>カタカナ　　　　　　　　　　：{{ data['katakana'] }}文字</p>
+        <p>漢字　　　　　　　　　　　　：{{ data['kanji'] }}文字</p>
+        <p>半角英字　　　　　　　　　　：{{ data['half_alpha'] }}文字</p>
+        <p>全角英字　　　　　　　　　　：{{ data['full_alpha'] }}文字</p>
+        <p>半角数字　　　　　　　　　　：{{ data['half_num'] }}文字</p>
+        <p>全角数字　　　　　　　　　　：{{ data['full_num'] }}文字</p>
+        <p>空白　　　　　　　　　　　　：{{ data['space'] }}文字</p>
+        <p>その他（記号・特殊文字など）：{{ data['other'] }}文字</p>
     {% endif %}
 </body>
 </html>
