@@ -2,30 +2,84 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>文字数カウンター</title>
+    <title>文字数カウント・文章加工ツール</title>
 </head>
 <body>
-    <h1>文字数カウンター</h1>
+    <h1>文字数カウント</h1>
 
     <form action="/" method="POST">
-        <input type="text" name="input_text" placeholder="文章を入力してください">
-        <input type="submit" value="カウント">
+        <input type="text" name="text_for_count" placeholder="文章を入力してください"
+               value="{{ request.form.get('text_for_count','') }}">
+        <input type="submit" value="送信">
+        <input type="button" value="リセット" onclick="location.href='/'">
     </form>
 
     <hr>
 
     {% if data is not none %}
-        <p>全体　　　　　　　　　　　　：{{ data['whole_length'] }}文字</p>
-        <p>空白を除く　　　　　　　　　：{{ data['no_space_length'] }}文字</p>
-        <p>ひらがな　　　　　　　　　　：{{ data['hiragana'] }}文字</p>
-        <p>カタカナ　　　　　　　　　　：{{ data['katakana'] }}文字</p>
-        <p>漢字　　　　　　　　　　　　：{{ data['kanji'] }}文字</p>
-        <p>半角英字　　　　　　　　　　：{{ data['half_alpha'] }}文字</p>
-        <p>全角英字　　　　　　　　　　：{{ data['full_alpha'] }}文字</p>
-        <p>半角数字　　　　　　　　　　：{{ data['half_num'] }}文字</p>
-        <p>全角数字　　　　　　　　　　：{{ data['full_num'] }}文字</p>
-        <p>空白　　　　　　　　　　　　：{{ data['space'] }}文字</p>
-        <p>その他（記号・特殊文字など）：{{ data['other'] }}文字</p>
+        <p>【文字数】</p>
+        <p>合計　　　　　　　　　　　　：   {{ data['whole_length'] }}文字</p>
+        <p>空白を除いた合計　　　　　　：{{ data['no_space_length'] }}文字</p>
+        <p>【種類ごとの内訳】</p>
+        <p>ひらがな　　　　　　　　　　：       {{ data['hiragana'] }}文字</p>
+        <p>カタカナ　　　　　　　　　　：       {{ data['katakana'] }}文字</p>
+        <p>漢字　　　　　　　　　　　　：          {{ data['kanji'] }}文字</p>
+        <p>半角英字　　　　　　　　　　：     {{ data['half_alpha'] }}文字</p>
+        <p>全角英字　　　　　　　　　　：     {{ data['full_alpha'] }}文字</p>
+        <p>半角数字　　　　　　　　　　：       {{ data['half_num'] }}文字</p>
+        <p>全角数字　　　　　　　　　　：       {{ data['full_num'] }}文字</p>
+        <p>空白　　　　　　　　　　　　：          {{ data['space'] }}文字</p>
+        <p>その他（記号・特殊文字など）：          {{ data['other'] }}文字</p>
+        <p>単語数（英文の場合）　　　　：     {{ data['word_count'] }}単語</p>
+    {% endif %}
+
+    <hr>
+
+    <h1>文章加工ツール</h1>
+
+    <form action="/" method="POST">
+        <p>加工方法にチェックを入れてください</p>
+        
+        <label>
+            <input type="radio" name="selected_item" value="remove">
+            特定の文字をすべて取り除く
+            <input type="text" name="char_for_remove" placeholder="削除する文字を入力">
+        </label><br>
+
+        <label>
+            <input type="radio" name="selected_item" value="exchange">
+            特定の文字をすべて入れ替える
+            <input type="text" name="char_before">
+            ➡
+            <input type="text" name="char_after">
+        </label><br>
+
+        <label>
+            <input type="radio" name="selected_item" value="bullet_points">
+            文章を箇条書きにする
+            <input type="text" name="separator" placeholder="区切り文字を入力">
+        </label><br>
+
+        <label>
+            <input type="radio" name="selected_item" value="remove_brank_line">
+            空行をすべて取り除く
+        </label><br><br>
+
+        <input type="text" name="text_for_format" placeholder="文章を入力してください"
+               value="{{ request.form.get('text_for_format', '') }}">
+        <input type="submit" value="送信">
+        <input type="button" value="リセット" onclick="location.href='/'">
+    </form>
+
+    {% if warning_message %}
+        <p>{{ warning_message }}</p>
+    {% endif %}
+
+    <hr>
+
+    {% if text_formatted is not none %}
+        <p>【加工された文章】</p>
+        <pre>{{text_formatted}}</pre>
     {% endif %}
 </body>
 </html>
