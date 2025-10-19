@@ -21,7 +21,7 @@ def index():
                 'full_alpha': len(re.findall(r'[\uFF21-\uFF3A\uFF41-\uFF5A]', text)),
                 'half_num': len(re.findall(r'[0-9]', text)),
                 'full_num': len(re.findall(r'[\uff10-\uff19]', text)),
-                'space': len(re.findall(r'\s+', text)),
+                'space': len(re.findall(r'\s', text)),
                 'word_count': len(re.findall(r"\b[\w']+\b", text))
             }
         

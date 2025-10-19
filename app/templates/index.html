@@ -19,97 +19,112 @@
     <hr>
 
     {% if data is not none %}
-        <p>
-            <span class="label">【文字数】</span>
-        </p>
+        <div class="result">
+            <p>
+                <span class="result_label">【文字数】</span>
+            </p>
 
-        <p>
-            <span class="label">・合計</span><br>
-            <span class="value">{{ data['whole_length'] }}文字</span>
-        </p>
+            <p>
+                <span class="result_label">・合計</span><br>
+                <span class="result_value">{{ data['whole_length'] }}文字</span>
+            </p>
 
-        <p>
-            <span class="label">・空白を除いた合計</span><br>
-            <span class="value">{{ data['no_space_length'] }}文字</span>
-        </p>
+            <p>
+                <span class="result_label">・空白を除いた合計</span><br>
+                <span class="result_value">{{ data['no_space_length'] }}文字</span>
+            </p>
 
-        <p>
-            <span class="label">【文字ごとの合計】</span>
-        </p>
+            <p>
+                <span class="result_label">【文字ごとの合計】</span>
+            </p>
 
-        <p>
-            <span class="label">・ひらがな</span><br>
-            <span class="value">{{ data['hiragana'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・カタカナ</span><br>
-            <span class="value">{{ data['katakana'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・漢字</span><br>
-            <span class="value">{{ data['kanji'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・半角英字</span><br>
-            <span class="value">{{ data['half_alpha'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・全角英字</span><br>
-            <span class="value">{{ data['full_alpha'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・半角数字</span><br>
-            <span class="value">{{ data['half_num'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・全角数字</span><br>
-            <span class="value">{{ data['full_num'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・空白</span><br>
-            <span class="value">{{ data['space'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・その他（記号・特殊文字など）</span><br>
-            <span class="value">{{ data['other'] }}文字</span>
-        </p>
-        <p>
-            <span class="label">・単語数（英文の場合）</span><br>
-            <span class="value">{{ data['word_count'] }}単語</span>
-        </p>
-    {% endif %}
+            <p>
+                <span class="result_label">・ひらがな</span><br>
+                <span class="result_value">{{ data['hiragana'] }}文字</span>
+            </p>
+           
+            <p>
+                <span class="result_label">・カタカナ</span><br>
+                <span class="result_value">{{ data['katakana'] }}文字</span>
+            </p>
+           
+            <p>
+                <span class="result_label">・漢字</span><br>
+                <span class="result_value">{{ data['kanji'] }}文字</span>
+            </p>
+           
+            <p>
+                <span class="result_label">・半角英字</span><br>
+                <span class="result_value">{{ data['half_alpha'] }}文字</span>
+            </p>
+            
+            <p>
+                <span class="result_label">・全角英字</span><br>
+                <span class="result_value">{{ data['full_alpha'] }}文字</span>
+            </p>
+           
+            <p>
+                <span class="result_label">・半角数字</span><br>
+                <span class="result_value">{{ data['half_num'] }}文字</span>
+            </p>
+           
+            <p>
+                <span class="result_label">・全角数字</span><br>
+                <span class="result_value">{{ data['full_num'] }}文字</span>
+            </p>
+           
+            <p>
+                <span class="result_label">・空白</span><br>
+                <span class="result_value">{{ data['space'] }}文字</span>
+            </p>
+            
+            <p>
+                <span class="result_label">・その他（記号・特殊文字など）</span><br>
+                <span class="result_value">{{ data['other'] }}文字</span>
+            </p>
+           
+            <p>
+                <span class="result_label">・単語数（英文の場合）</span><br>
+                <span class="result_value">{{ data['word_count'] }}単語</span>
+            </p>
+        </div>
+     {% endif %}
 
     <hr>
 
     <h1>＜文章編集ツール＞</h1>
     <h2>入力された文章を選択した方法で編集します</h2>
     <form action="/" method="POST">
-        <p>編集方法にチェックを入れてください</p>
+
         
-        <label>
-            <input type="radio" name="selected_item" value="remove">
-            特定の文字をすべて取り除く
-            <input type="text" name="char_for_remove" placeholder="削除する文字を入力">
-        </label><br>
+        <p>編集方法にチェックを入れてください</p>
 
-        <label>
-            <input type="radio" name="selected_item" value="exchange">
-            特定の文字をすべて入れ替える
-            <input type="text" name="char_before">
-            ➡
-            <input type="text" name="char_after">
-        </label><br>
+        <div class="selected">
+            <label>
+                <input type="radio" name="selected_item" value="remove">
+                特定の文字をすべて取り除く
+                <input type="text" name="char_for_remove" placeholder="削除する文字を入力">
+            </label><br>
 
-        <label>
-            <input type="radio" name="selected_item" value="bullet_points">
-            文章を箇条書きにする
-            <input type="text" name="separator" placeholder="区切り文字を入力">
-        </label><br>
+            <label>
+                <input type="radio" name="selected_item" value="exchange">
+                特定の文字をすべて入れ替える
+                <input type="text" name="char_before">
+                ⇒
+                <input type="text" name="char_after">
+            </label><br>
 
-        <label>
-            <input type="radio" name="selected_item" value="remove_brank_line">
-            空行をすべて取り除く
-        </label><br><br>
+            <label>
+                <input type="radio" name="selected_item" value="bullet_points">
+                文章を箇条書きにする
+                <input type="text" name="separator" placeholder="区切り文字を入力">
+            </label><br>
+
+            <label>
+                <input type="radio" name="selected_item" value="remove_brank_line">
+                空行をすべて取り除く
+            </label><br><br>
+        </div>
 
         <textarea name="text_for_format" placeholder="文章を入力してください">{{ request.form.get('text_for_format', '') }}</textarea>
         <input type="submit" value="編集">

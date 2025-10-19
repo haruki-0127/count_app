@@ -38,11 +38,11 @@ p {
     margin: 10px 0;
 }
 
-p .label {
+p .result_label {
     font-weight: bold;
 }
 
-p .value {
+p .result_value {
     margin-left: 15px; 
     font-size: 16px;
 }
