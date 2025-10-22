@@ -4,7 +4,7 @@
 言語はPython、フレームワークはFlaskで作成しており、Render上にデプロイしています。
 
 ## デモ
-[URL](https://count-edit-app.onrender.com/)
+[URLはこちら](https://count-edit-app.onrender.com/)
 
 ## 機能
 
